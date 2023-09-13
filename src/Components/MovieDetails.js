@@ -23,7 +23,7 @@ const MovieDetails = () => {
         {movie && (
           <div className='movie-details'>
             <div className='left-sidebar'>
-              <a href='https' className='official-logo'><img src={pic} alt='w'/><h2>MovieBox</h2></a>
+              <a href='/' className='official-logo'><img src={pic} alt='w'/><h2>MovieBox</h2></a>
               <div className='sidebar-links'>
                 <a href='/'><img src={pic1} alt='w'/><span>Home</span></a>
                 <a href='/'><img src={pic2} alt='w'/><span>Movies</span></a>

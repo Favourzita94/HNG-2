@@ -21,7 +21,7 @@ html, body{
 .hero-section{
   width: 100%;
   height: 600px;
-  background-image: url('../src/assets/Poster.png');
+  background-image: url('../src/images/Poster.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -518,7 +518,7 @@ color: hsla(0, 0%, 0%, 1);
   .hero-section{
     width: 100%;
     height: 600px;
-    background-image: url('../src/assets/Poster.png');
+    background-image: url('../src/images/Poster.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
