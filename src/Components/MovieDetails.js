@@ -1,5 +1,6 @@
+import React from 'react'
 import { useParams } from 'react-router-dom'
-import useFetch from './useFetch';
+import useFetch from './fetchData';
 import pic from '../images/tv.svg'
 import pic1 from  '../images/Home.svg'
 import pic2 from '../images/Movie Projector.svg'
@@ -9,24 +10,11 @@ import pic5 from '../images/List.svg'
 import pic6 from '../images/Logout.svg'
 import poster from '../images/Rectangle 37.png'
 
+const MovieDetails = () => {
 
-  const MovieDetails = () => {
-    const { id } = useParams();
-    const { data: movie, loading, error } = useFetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=f795ec3c5ed2510991e6639ae7e2fc8a`
-    );
-  
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-  
-    if (error) {
-      return <div>{error}</div>;
-    }
-  
-    if (!movie) {
-      return null;
-    }
+  const {id} = useParams();
+  const {data:movie, loading, error} = useFetch('https://api.themoviedb.org/3/movie/' + id + '?api_key=f795ec3c5ed2510991e6639ae7e2fc8a')
+  console.log(movie)
 
   return (
     <div className='movie-details-page'>
