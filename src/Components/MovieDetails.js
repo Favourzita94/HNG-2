@@ -1,4 +1,5 @@
-import React from 'react'
+
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import fetchData from './fetchData';
 import pic from '../images/tv.svg'
@@ -12,9 +13,41 @@ import poster from '../images/Rectangle 37.png'
 
 const MovieDetails = () => {
 
-  const {id} = useParams();
-  const {data:movie, loading, error} = fetchData('https://api.themoviedb.org/3/movie/' + id + '?api_key=f795ec3c5ed2510991e6639ae7e2fc8a')
-  console.log(movie)
+  const { id } = useParams();
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+      const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=f795ec3c5ed2510991e6639ae7e2fc8a`;
+
+    fetchData(apiUrl)
+      .then((result) => {
+        if (result.error) {
+          setError(result.error);
+        } else {
+          setMovie(result.data);
+        }
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError('Failed to fetch data');
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!movie) {
+    return null; 
+  }
+
 
   return (
     <div className='movie-details-page'>
