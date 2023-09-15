@@ -159,7 +159,7 @@ color: hsla(0, 0%, 0%, 1);
   color: hsla(345, 83%, 41%, 1);
   }
 
-.movieList-container{
+.movieList-containers{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   max-width: 100%;
