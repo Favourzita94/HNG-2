@@ -13,7 +13,7 @@ import poster from '../images/Rectangle 37.png'
 const MovieDetails = () => {
 
   const {id} = useParams();
-  const {data:movie, loading, error} = fetchData('https://api.themoviedb.org/3/movie/' + id + '?api_key=850136383d9112b1fa4ef05d1d27c587')
+  const {data:movie, loading, error} = fetchData('https://api.themoviedb.org/3/movie/' + id + '?api_key=f795ec3c5ed2510991e6639ae7e2fc8a')
   console.log(movie)
 
   return (
