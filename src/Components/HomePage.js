@@ -1,14 +1,14 @@
 import Hero from './Hero'
 import Navbar from './Navbar'
 import Footer from './Footer';
-import fetchData from './fetchData';
+import useFetch from './useFetch';
 import { useState } from 'react';
 import MovieCard from './MovieCard';
 
 
 
 const HomePage = () => {    
-    const {data:movieLists, error, loading} = fetchData('https://api.themoviedb.org/3/discover/movie?api_key=f795ec3c5ed2510991e6639ae7e2fc8a')
+    const {data:movieLists, error, loading} = useFetch('https://api.themoviedb.org/3/discover/movie?api_key=f795ec3c5ed2510991e6639ae7e2fc8a')
     const [isClicked, setIsClicked] = useState(false);
     const handleClick = () => {
         setIsClicked(!isClicked);

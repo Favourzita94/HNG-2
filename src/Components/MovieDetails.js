@@ -1,7 +1,5 @@
-
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import fetchData from './fetchData';
+import useFetch from './useFetch';
 import pic from '../images/tv.svg'
 import pic1 from  '../images/Home.svg'
 import pic2 from '../images/Movie Projector.svg'
@@ -11,43 +9,24 @@ import pic5 from '../images/List.svg'
 import pic6 from '../images/Logout.svg'
 import poster from '../images/Rectangle 37.png'
 
-const MovieDetails = () => {
 
-  const { id } = useParams();
-  const [movie, setMovie] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-      const apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=f795ec3c5ed2510991e6639ae7e2fc8a`;
-
-    fetchData(apiUrl)
-      .then((result) => {
-        if (result.error) {
-          setError(result.error);
-        } else {
-          setMovie(result.data);
-        }
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError('Failed to fetch data');
-        setLoading(false);
-      });
-  }, [id]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (!movie) {
-    return null; 
-  }
-
+  const MovieDetails = () => {
+    const { id } = useParams();
+    const { data: movie, loading, error } = useFetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=f795ec3c5ed2510991e6639ae7e2fc8a`
+    );
+  
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+  
+    if (error) {
+      return <div>{error}</div>;
+    }
+  
+    if (!movie) {
+      return null;
+    }
 
   return (
     <div className='movie-details-page'>
